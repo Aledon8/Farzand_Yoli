@@ -1,22 +1,24 @@
-import Header from "./Components/Header/Header";
-import Navbar from "./Components/Navbar/Navbar";
-import Services from "./Components/Services/Services";
+import { Routes, Route, Link } from 'react-router-dom';
+
+import ForumPage from './Pages/forum/forum.js';
+import HomePage from './Pages/home/home.js';
+import NotFoundPage from './Pages/notFound/notFound.js';
+import AccountPage from './Pages/account/account.js';
+import { Navbar } from './Components/Navbar/Navbar.js';
 import "./Main.scss";
+
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-9">
-            <Header />
-          </div>
-          <div className="col-lg-3">
-            <Services />
-          </div>
-        </div>
-      </div>
+      <Routes>
+          <Route path="/" element={<Navbar />} >
+            <Route index element={<HomePage />} />
+            <Route path="forum" element={<ForumPage />} />
+            <Route path="account" element={<AccountPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+      </Routes>
     </div>
   );
 }

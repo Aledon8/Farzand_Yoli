@@ -46,4 +46,4 @@ function Product({ el, value, max = 5 }) {
   );
 }
 
-export default Product;
+export { Product };

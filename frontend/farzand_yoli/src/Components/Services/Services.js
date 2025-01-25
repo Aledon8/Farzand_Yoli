@@ -166,4 +166,4 @@ function Services() {
   );
 }
 
-export default Services;
+export {Services};

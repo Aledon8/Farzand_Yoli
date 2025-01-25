@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.scss";
 import Sorting from "../../Images/Icons/Sorting.svg";
-import Product from "../Product/Product";
+import { Product } from "../Product/Product";
 import PrductImg from "../../Images/product.png";
 
 function Header() {
@@ -100,4 +100,4 @@ function Header() {
   );
 }
 
-export default Header;
+export { Header };
