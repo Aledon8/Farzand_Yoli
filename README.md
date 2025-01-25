@@ -65,9 +65,9 @@ Farzand Yoli provides tools and solutions for parents and children:
 
 ## 🛠 Development Breakdown
 
-| File Type   | Contribution % |
-|-------------|----------------|
-| **HTML**    | 14.1%          |
-| **CSS**     | 7.6%           |
-| **JavaScript/React** | 40%   |
-| **Python (Django)** | 38.3% |
+| File Type   |
+|-------------|
+| **HTML**    | 
+| **CSS**     | 
+| **JavaScript/React** |
+| **Python (Django)** | 
