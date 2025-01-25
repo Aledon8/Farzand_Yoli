@@ -1,34 +1,50 @@
-from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Profile
+from rest_framework import serializers
+from django.contrib.auth import authenticate
 
 
+# REGISTER SERIALIZER
+class RegisterSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True, min_length=8)
 
-# Сериализатор для модели User (пользователя)
-class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'first_name', 'last_name']  # Поля пользователя
-
-# Сериализатор для модели Profile
-class ProfileSerializer(serializers.ModelSerializer):
-    user = UserSerializer(read_only=True)  # Вложенный сериализатор для пользователя (readonly)
-
-    class Meta:
-        model = Profile
-        fields = ['id', 'user', 'city', 'phone_number', 'firsname', 'lastname', 'avatar']  # Все поля профиля
-
-    def update(self, instance, validated_data):
-        # Для обновления профиля пользователя без изменения связанных данных пользователя
-        instance.city = validated_data.get('city', instance.city)
-        instance.phone_number = validated_data.get('phone_number', instance.phone_number)
-        instance.firsname = validated_data.get('firsname', instance.firsname)
-        instance.lastname = validated_data.get('lastname', instance.lastname)
-        instance.avatar = validated_data.get('avatar', instance.avatar)
-        
-        instance.save()
-        return instance
+        fields = ['username', 'email', 'password']
 
     def create(self, validated_data):
-        # Если профиля еще нет, создаем его
-        return Profile.objects.create(**validated_data)
+        user = User.objects.create_user(
+            username=validated_data['username'],
+            email=validated_data['email'],
+            password=validated_data['password']
+        )
+        return user
+
+# LOGIN SERIALIZER
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField(write_only=True)
+
+    def validate(self, data):
+        user = authenticate(username=data['username'], password=data['password'])
+        if not user:
+            raise serializers.ValidationError("Неверные учетные данные.")
+        data['user'] = user
+        return data
+
+# USER PROFILE SERIALIZER
+class UpdateProfileSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(required=True)
+    first_name = serializers.CharField(required=False, allow_blank=True)
+    last_name = serializers.CharField(required=False, allow_blank=True)
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'first_name', 'last_name']
+
+    def update(self, instance, validated_data):
+        instance.username = validated_data.get('username', instance.username)
+        instance.email = validated_data.get('email', instance.email)
+        instance.first_name = validated_data.get('first_name', instance.first_name)
+        instance.last_name = validated_data.get('last_name', instance.last_name)
+        instance.save()
+        return instance

@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+
 # Model for Kindergarten
 class Kindergarten(models.Model):
     name = models.CharField(max_length=255)
@@ -66,8 +67,6 @@ class Event(models.Model):
     university = models.ForeignKey(University, on_delete=models.CASCADE, null=True, blank=True, related_name='events')
     training_center = models.ForeignKey(TrainingCenter, on_delete=models.CASCADE, null=True, blank=True, related_name='events')
     
-    participants = models.ManyToManyField('account.CustomUser', related_name='participating_events', blank=True)  
-
     created_at = models.DateTimeField(auto_now_add=True)  
     updated_at = models.DateTimeField(auto_now=True)  
 

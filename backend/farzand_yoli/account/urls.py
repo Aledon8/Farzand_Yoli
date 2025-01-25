@@ -1,8 +1,10 @@
-# account/urls.py
 from django.urls import path
-from . import views  
+from . import views
 
 urlpatterns = [
-    path('login/', views.LoginView.as_view(), name='login'),
-    path('register/', views.RegisterView.as_view(), name='register'),
+    path('api/register/', views.RegisterAPIView.as_view(), name='api_register'),
+    path('api/login/', views.LoginAPIView.as_view(), name='api_login'),
+    path('api/update-profile/', views.UpdateProfileAPIView.as_view(), name='api_update_profile'),
 ]
+
+

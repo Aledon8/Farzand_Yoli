@@ -129,7 +129,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Django rest framework
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
     'PAGE_SIZE': 10,  # Number of items per page
 }
 
-AUTH_USER_MODEL = 'account.CustomUser' 
+# JWT settings
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
+

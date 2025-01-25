@@ -1,19 +1,17 @@
-# models.py
-
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
 
-# models.py
 from django.contrib.auth.models import User
 from django.db import models
 
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile') 
-    city = models.CharField(max_length=100, blank=True)
-    phone_number = models.CharField(max_length=20, blank=True)
-    firsname = models.CharField(max_length=100, blank=True)
-    lastname = models.CharField(max_length=100, blank=True)
-    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)  
+# Create your models here.
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    bio = models.TextField(blank=True, null=True, verbose_name="О себе")
+    avatar = models.ImageField(upload_to='avatars/', blank=True, null=True, verbose_name="Аватар")
+    phone_number = models.CharField(max_length=15, blank=True, null=True, verbose_name="Номер телефона")
+    birth_date = models.DateField(blank=True, null=True, verbose_name="Дата рождения")
 
     def __str__(self):
-        return f"Profile of {self.user.username}"
-
+        return f"Профиль: {self.user.username}"
