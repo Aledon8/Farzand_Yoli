@@ -46,21 +46,7 @@ Farzand Yoli provides tools and solutions for parents and children:
 ### Database
 - **PostgreSQL**: To store and manage structured data like user profiles, educational institutions, and expenses.
 
-### Additional Tools
-- **Redis**: For caching and task queues.
-- **Celery**: For background task management.
-- **Docker**: For containerization and simplified deployment.
-- **Git**: For version control.
 
----
-
-## 🚀 Deployment
-
-- **Hosting**: AWS or DigitalOcean.
-- **Web Server**: Nginx for serving static files and reverse proxy.
-- **Application Server**: Gunicorn for running Django.
-
----
 
 ## 📊 Technology Breakdown
 
