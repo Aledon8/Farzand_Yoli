@@ -1,11 +1,41 @@
 from django.shortcuts import render
-from rest_framework import generics
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login as auth_login
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.http import JsonResponse
+from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
-from .serializers import RegisterSerializer, LoginSerializer, UpdateProfileSerializer
-from rest_framework import status
+from .serializers import RegisterSerializer, LoginSerializer, UpdateUserSerializer
+import json
+
+
+@csrf_exempt
+def register(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        email = data.get('email')
+        password = data.get('password')
+        if email and password:
+            user = User.objects.create_user(username=email, email=email, password=password)
+            return JsonResponse({'message': 'User registered successfully'})
+        return JsonResponse({'error': 'Invalid data'}, status=400)
+    return JsonResponse({'error': 'Invalid method'}, status=405)
+
+@csrf_exempt
+def login(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        email = data.get('email')
+        password = data.get('password')
+        user = authenticate(request, username=email, password=password)
+        if user is not None:
+            auth_login(request, user)
+            return JsonResponse({'message': 'Login successful'})
+        return JsonResponse({'error': 'Invalid credentials'}, status=400)
+    return JsonResponse({'error': 'Invalid method'}, status=405)
 
 # Register user
 class RegisterAPIView(APIView):
@@ -35,17 +65,18 @@ class LoginAPIView(APIView):
             }, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-# Update user profile
-class UpdateProfileAPIView(APIView):
+# Update user data
+class UpdateUserAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
     def put(self, request):
-        serializer = UpdateProfileSerializer(instance=request.user, data=request.data, partial=True)
+        user = request.user
+        serializer = UpdateUserSerializer(user, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response({
-                "message": "Профиль успешно обновлён.",
-                "data": serializer.data
+                "message": "Данные пользователя обновлены успешно.",
+                "username": user.username,
+                "email": user.email
             }, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

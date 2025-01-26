@@ -1,0 +1,42 @@
+.Footer {
+  background: url('../../Images/Background-Nav.png') no-repeat center center/cover;
+  background-color: #007bff;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    .footer-logo {
+      img {
+        width: 100px;
+        height: auto;
+      }
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 10px;
+
+      a {
+        color: #fff;
+        margin: 0 10px;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .footer-text {
+      font-size: 14px;
+    }
+  }
+}

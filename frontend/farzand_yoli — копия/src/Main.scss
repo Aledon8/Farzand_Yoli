@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #d3eeff !important;
+}
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0, auto;
+  padding: 0, 10px;
+}
+
+.container-fuild {
+  max-width: 1550px;
+  margin: auto;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+li {
+  list-style: none;
+  text-decoration: none;
+}
+
+.mt {
+  margin-top: 100px;
+}

@@ -1,0 +1,65 @@
+{
+  "organic": [
+    {
+      "title": "Harvard-Westlake School",
+      "link": "https://www.hw.com/",
+      "snippet": "Harvard-Westlake School is an independent, co-educational college preparatory day school for grades 7-12, located on two campuses in the Los Angeles area.",
+      "position": 1
+    },
+    {
+      "title": "The Syracuse City School District | Syracuse, NY",
+      "link": "https://www.syracusecityschools.com/",
+      "snippet": "(315) 435-4499 · Become a Mentor or Volunteer! · Before & After School Programs · Breakfast & Lunch Menus · Photos · Videos.",
+      "position": 2
+    },
+    {
+      "title": "Welcome to Albany City Schools | City School District of Albany",
+      "link": "https://www.albanyschools.org/",
+      "snippet": "The mission of the City School District of Albany is to work in partnership with our diverse community to engage every learner in a robust educational program ...",
+      "position": 3
+    },
+    {
+      "title": "Singapore American School: International School in Singapore",
+      "link": "https://www.sas.edu.sg/",
+      "snippet": "Singapore American School, a private pre-k to grade 12 school in Singapore, focuses on growth, development, and cultural awareness. Discover SAS!",
+      "position": 4
+    },
+    {
+      "title": "German Excellence. Global Relevance. - Frankfurt School",
+      "link": "https://www.frankfurt-school.de/en/home",
+      "snippet": "Frankfurt School is one of Europe's leading business schools delivering German excellence in management and finance education.",
+      "position": 5
+    },
+    {
+      "title": "SKEMA Business School, an international business school",
+      "link": "https://www.skema.edu/en",
+      "snippet": "SKEMA Business School, a leading global business school.",
+      "position": 6
+    },
+    {
+      "title": "School Card scheme - SA.GOV.AU",
+      "link": "https://www.sa.gov.au/topics/education-and-learning/financial-help-scholarships-and-grants/school-card-scheme",
+      "snippet": "How to apply · This is the most commonly used school card application. · Use this form if you're an adult re-entry student – over 18, returning to study and ...",
+      "position": 7
+    },
+    {
+      "title": "Yale School of Medicine - Yale University",
+      "link": "https://medicine.yale.edu/",
+      "snippet": "Yale School of Medicine educates and nurtures creative leaders in medicine and science, promoting curiosity and critical inquiry in an inclusive ...",
+      "position": 8
+    },
+    {
+      "title": "Poudre School District: home",
+      "link": "https://www.psdschools.org/",
+      "snippet": "Excitement filled classrooms across the district as the Poudre School District Foundation recently visited schools to celebrate staff selected as Ignite Grant ...",
+      "position": 9
+    },
+    {
+      "title": "Home - Avon Community School Corp",
+      "link": "https://www.avon-schools.org/",
+      "snippet": "We offer children high-quality educational instruction with a keen focus on improving student achievement. We serve 11,000 students from preschool through ...",
+      "position": 10
+    }
+  ],
+  "credits": 1
+}

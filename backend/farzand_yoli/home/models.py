@@ -7,8 +7,6 @@ class Kindergarten(models.Model):
     address = models.CharField(max_length=500)
     phone_number = models.CharField(max_length=20)
     email = models.EmailField()
-    established_date = models.DateField()
-    director = models.CharField(max_length=255)
     
     def __str__(self):
         return self.name 
@@ -19,8 +17,6 @@ class School(models.Model):
     address = models.CharField(max_length=500)
     phone_number = models.CharField(max_length=20)
     email = models.EmailField()
-    established_date = models.DateField()
-    director = models.CharField(max_length=255)
     number_of_students = models.IntegerField()
     
     def __str__(self):
@@ -32,8 +28,6 @@ class University(models.Model):
     address = models.CharField(max_length=500)
     phone_number = models.CharField(max_length=20)
     email = models.EmailField()
-    established_date = models.DateField()
-    rector = models.CharField(max_length=255)
     number_of_faculties = models.IntegerField()
     
     def __str__(self):
@@ -45,8 +39,6 @@ class TrainingCenter(models.Model):
     address = models.CharField(max_length=500)
     phone_number = models.CharField(max_length=20)
     email = models.EmailField()
-    established_date = models.DateField()
-    director = models.CharField(max_length=255)
     courses_offered = models.TextField()
     number_of_employees = models.IntegerField()
     
@@ -78,3 +70,28 @@ class Event(models.Model):
         organizer_count = sum([bool(self.kindergarten), bool(self.school), bool(self.university), bool(self.training_center)])
         if organizer_count != 1:
             raise ValidationError("The event must have only one organizer (Kindergarten, School, University, or TrainingCenter).")
+        
+        
+# Model for Post
+
+class Post(models.Model):
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.title
+    
+# Model for Comment
+
+class Comment(models.Model):
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.content[:50] + "..."

@@ -25,12 +25,13 @@ SECRET_KEY = 'django-insecure-a@uw9_armhxcqavlxj=h(%jsggeym%26as^!b7v*i0(b72)e3l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['climbing-mayfly-careful.ngrok-free.app']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'jazzmin',
     'account',
     'home', 
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -189,3 +191,10 @@ JAZZMIN_SETTINGS = {
 
     "show_ui_builder": True, 
 }
+
+CSRF_TRUSTED_ORIGINS = ['https://climbing-mayfly-careful.ngrok-free.app']
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    # Добавьте другие разрешенные домены здесь
+]
