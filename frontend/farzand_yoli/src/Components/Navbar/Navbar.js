@@ -7,8 +7,7 @@ import "./Navbar.scss";
 
 Modal.setAppElement("#root");
 
-function Navbar() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+function Navbar({ isAuthenticated, setIsAuthenticated }) {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -36,57 +35,22 @@ function Navbar() {
     setRegisterData({ ...registerData, [e.target.name]: e.target.value });
   };
 
-  const handleLoginSubmit = async (e) => {
+  const handleLoginSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch("/api/login/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(loginData),
-      });
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error("Error response:", errorText);
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-      setIsAuthenticated(true);
-      closeLoginModal();
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    // Успешная авторизация
+    setIsAuthenticated(true);
+    closeLoginModal();
   };
 
-  const handleRegisterSubmit = async (e) => {
+  const handleRegisterSubmit = (e) => {
     e.preventDefault();
     if (registerData.password !== registerData.confirmPassword) {
       alert("Passwords do not match");
       return;
     }
-    try {
-      const response = await fetch("/api/register/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: registerData.email,
-          password: registerData.password,
-        }),
-      });
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error("Error response:", errorText);
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-      setIsAuthenticated(true);
-      closeRegisterModal();
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    // Успешная регистрация
+    setIsAuthenticated(true);
+    closeRegisterModal();
   };
 
   return (
@@ -101,10 +65,10 @@ function Navbar() {
             </Link>
           </div>
           <div className="nav-con">
-            {isAuthenticated ? (
+            {window.location.pathname === '/home' ? (
               <ul className="ml-auto show">
                 <li>
-                  <NavLink to="/" className="nav-link">
+                  <NavLink to="/home" className="nav-link">
                     Главная
                   </NavLink>
                 </li>
@@ -159,7 +123,7 @@ function Navbar() {
             <label htmlFor="login-password">Пароль:</label>
             <input type="password" id="login-password" name="password" value={loginData.password} onChange={handleLoginChange} required />
           </div>
-          <button type="submit">Войти</button>
+          <Link to='home'><button type="submit">Войти</button></Link>
         </form>
         <button onClick={closeLoginModal}>Закрыть</button>
       </Modal>
@@ -185,7 +149,7 @@ function Navbar() {
             <label htmlFor="register-confirm-password">Подтвердите пароль:</label>
             <input type="password" id="register-confirm-password" name="confirmPassword" value={registerData.confirmPassword} onChange={handleRegisterChange} required />
           </div>
-          <button type="submit">Зарегистрироваться</button>
+          <Link to='home'><button type="submit">Зарегистрироваться</button></Link>
         </form>
         <button onClick={closeRegisterModal}>Закрыть</button>
       </Modal>

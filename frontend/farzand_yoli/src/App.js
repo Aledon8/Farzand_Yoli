@@ -16,7 +16,8 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/" element={isAuthenticated ? <HomePage /> : <VisitPage />} />
+        <Route path="/home" element={ <HomePage />} />
+        <Route path="/" element={<VisitPage />} />
         <Route path="/forum" element={<ForumPage />} />
         <Route path="/account" element={<AccountPage />} />
         <Route path="*" element={<NotFoundPage />} />

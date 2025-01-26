@@ -7,50 +7,69 @@ import PrductImg from "../../Images/product.png";
 function Header() {
   const data = [
     {
-      name: "Bog'cha 423",
-      status: "платный",
+      name: "ДЕТСКИЙ САД №100 (АЙИКЧА)",
+      status: "Узбекистан, 100100, Ташкент, Яккасарайский район, ул. МАХМУДА ТАРАБИ, 31 А",
       title:
-        "Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit quent per conubia nostra, per inceptos himena..... Подробнее",
+        "+998 33 330-85-13",
+      rating: 5.3,
+      favorites: false,
+      img: PrductImg,
+    },
+    {
+      name: "ДЕТСКИЙ САД № 91 (КРЫЛЫШКИ)",
+      status: "Узбекистан, 100093, Ташкент, Юнусабадский район, м-в ЮНУСАБАД-4,",
+      title:
+        "+998 90 180-20-52",
       rating: 4.3,
       favorites: false,
       img: PrductImg,
     },
     {
-      name: "Bog'cha 423",
-      status: "платный",
+      name: "ЕТСКИЙ САД № 83 (БОЙЧЕЧАК)",
+      status: "Узбекистан, 100201, Ташкент, Мирзо-улугбекский район, м-в АХМАДА ЮГНАКИ, 33 А",
       title:
-        "Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit quent per conubia nostra, per inceptos himena..... Подробнее",
+        "+998 90 150-50-25",
+      rating: 1.3,
+      favorites: false,
+      img: PrductImg,
+    },
+    {
+      name: "ДЕТСКИЙ САД № 79",
+      status: "Узбекистан, 100076, Ташкент, Яшнабадский район, ул. ФАРГОНА ЙУЛИ, 95 А",
+      title:
+        "+998 50 250-50-45",
+      rating: 2.3,
+      favorites: false,
+      img: PrductImg,
+    },
+    {
+      name: "ОБЩЕОБРАЗОВАТЕЛЬНАЯ СРЕДНЯЯ ШКОЛА № 18 г. ТАШКЕНТ",
+      status: "Узбекистан, Ташкент, Мирзо-улугбекский район, ул. АСАКА, 5",
+      title:
+        "+998 71-840-71-17",
+      rating: 5.0,
+      favorites: false,
+      img: PrductImg,
+    },
+    {
+      name: "ОБЩЕОБРАЗОВАТЕЛЬНАЯ СРЕДНЯЯ ШКОЛА №158",
+      status: "Узбекистан, Ташкент, Мирабадский район, ул. ТОЛЛИМАРЖОН, 16",
+      title:
+        "+998 71 291-19-12",
       rating: 4.3,
       favorites: false,
       img: PrductImg,
     },
     {
-      name: "Bog'cha 423",
-      status: "платный",
+      name: "ОБЩЕОБРАЗОВАТЕЛЬНАЯ СРЕДНЯЯ ШКОЛА № 2",
+      status: "Узбекистан, 100002, Ташкент, Сергелийский район, м-в ЙУЛДОШ-2Ц, 18",
       title:
-        "Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit quent per conubia nostra, per inceptos himena..... Подробнее",
+        "+998 71 289-00-00",
       rating: 4.3,
       favorites: false,
       img: PrductImg,
     },
-    {
-      name: "Bog'cha 423",
-      status: "платный",
-      title:
-        "Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit quent per conubia nostra, per inceptos himena..... Подробнее",
-      rating: 4.3,
-      favorites: false,
-      img: PrductImg,
-    },
-    {
-      name: "Bog'cha 423",
-      status: "платный",
-      title:
-        "Jorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit quent per conubia nostra, per inceptos himena..... Подробнее",
-      rating: 4.3,
-      favorites: false,
-      img: PrductImg,
-    },
+    
   ];
   return (
     <div className="mt">

@@ -10,16 +10,18 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
 from .serializers import RegisterSerializer, LoginSerializer, UpdateUserSerializer
 import json
+from django.views.decorators.csrf import csrf_exempt
 
 
 @csrf_exempt
 def register(request):
     if request.method == 'POST':
         data = json.loads(request.body)
+        username = data.get('username')
         email = data.get('email')
         password = data.get('password')
         if email and password:
-            user = User.objects.create_user(username=email, email=email, password=password)
+            User.objects.create_user(username=username, email=email, password=password)
             return JsonResponse({'message': 'User registered successfully'})
         return JsonResponse({'error': 'Invalid data'}, status=400)
     return JsonResponse({'error': 'Invalid method'}, status=405)
@@ -28,9 +30,9 @@ def register(request):
 def login(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        email = data.get('email')
+        username = data.get('username')
         password = data.get('password')
-        user = authenticate(request, username=email, password=password)
+        user = authenticate(request, username=username, password=password)
         if user is not None:
             auth_login(request, user)
             return JsonResponse({'message': 'Login successful'})
@@ -38,6 +40,7 @@ def login(request):
     return JsonResponse({'error': 'Invalid method'}, status=405)
 
 # Register user
+@csrf_exempt
 class RegisterAPIView(APIView):
     def post(self, request):
         serializer = RegisterSerializer(data=request.data)
@@ -52,6 +55,7 @@ class RegisterAPIView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # Login user
+@csrf_exempt
 class LoginAPIView(APIView):
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
