@@ -1,7 +1,7 @@
 # Farzand Yoli
 
 
-**Slogan**: Parents are not born, they are made.
+**Slogan**: Parents are not born, they are made!
 
 ## 🚀 Description
 
