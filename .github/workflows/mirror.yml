@@ -3,7 +3,7 @@ name: Mirror to GitLab
 on:
   push:
     branches:
-      - main  # Измените на вашу основную ветку
+      - main
 
 jobs:
   mirror:
@@ -16,5 +16,5 @@ jobs:
         env:
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
         run: |
-          git remote add gitlab https://oauth2:$GITLAB_TOKEN@gitlab.com/YOUR_GITLAB_USERNAME/YOUR_GITLAB_REPO.git
+          git remote add gitlab https://oauth2:$GITLAB_TOKEN@gitlab.com/Aledon8/Farzand_Yoli.git
           git push --mirror gitlab
