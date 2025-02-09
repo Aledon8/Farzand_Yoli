@@ -1,8 +1,5 @@
 # Farzand Yoli
 
-<div align="center">
-  <img src="https://github.com/Aledon8/Farzand_Yoli/blob/main/frontend/farzand_yoli/src/favicon/web-app-manifest-512x512.png" alt="Farzand Yoli Logo" width="200">
-</div>
 
 **Slogan**: Parents are not born, they are made.
 
