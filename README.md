@@ -55,12 +55,8 @@ Farzand Yoli provides tools and solutions for parents and children:
 |---------------------|--------------------------------|
 | **Python (Django)** | Backend framework             |
 | **JavaScript (React)** | Frontend development       |
-| **PostgreSQL**      | Database management           |
-| **Redis**           | Caching and task queues       |
-| **Docker**          | Containerization              |
+| **SQLite**          | Database management           |      |             |
 | **Bootstrap**       | UI design and responsiveness  |
-| **Nginx**           | Web server                    |
-| **Celery**          | Background task management    |
 
 ---
 
