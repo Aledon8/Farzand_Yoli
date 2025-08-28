@@ -3,6 +3,7 @@ from django.db import models
 
 # Create your models here.
 
+# Custom model that use User basic model
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     bio = models.TextField(blank=True, null=True, verbose_name="О себе")
